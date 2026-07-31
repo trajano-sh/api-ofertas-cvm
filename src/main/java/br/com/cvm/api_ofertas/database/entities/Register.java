@@ -47,9 +47,9 @@ public class Register {
 
     private String nomeTipoRequerimento;
 
-    private boolean vasoComunicante;
+    private Boolean vasoComunicante;
 
-    private boolean possuiBook;
+    private Boolean possuiBook;
 
-    private boolean registroAutomatico;
+    private Boolean registroAutomatico;
 }
