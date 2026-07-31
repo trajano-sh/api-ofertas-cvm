@@ -18,7 +18,7 @@ public class Register {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false,name = "id_requerimento")
     private String idRequerimento;
 
     @Column(unique = true, nullable = false)
