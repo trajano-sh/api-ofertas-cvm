@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.awt.print.Pageable;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface RegisterRepository extends JpaRepository<Register, UUID> {
@@ -31,4 +32,6 @@ public interface RegisterRepository extends JpaRepository<Register, UUID> {
                 plainto_tsquery('portuguese', :searchTerm)
             """, nativeQuery = true)
     Page<Register> searchByTerm(@Param("searchTerm") String searchTerm, Pageable pageable);
+
+    Optional<Register> findByIdRequerimento(String idRequerimento);
 }
