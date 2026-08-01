@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -25,6 +25,8 @@ public class RegisterService {
 
     public void createOffers(List<RegisterRequestDTO> registers) {
 
+        registers.removeIf(register -> registerRepository.findByIdRequerimento(register.idRequerimento()).isPresent());
+
         List<Register> registerEntity = registerMapper.toEntity(registers);
         registerRepository.saveAll(registerEntity);
     }
@@ -37,7 +39,6 @@ public class RegisterService {
 
     public Page<RegisterResponseDTO> searchByTerm(String term, Pageable pageable) {
         Page<Register> registers = registerRepository.searchByTerm(term, pageable);
-
         return registerMapper.toResponseAll(registers);
     }
 
@@ -45,7 +46,7 @@ public class RegisterService {
     public void refreshOffers(List<RegisterRequestDTO> dtoList) {
         if (dtoList == null || dtoList.isEmpty()) return;
         List<String> ids = dtoList.stream().map(RegisterRequestDTO::idRequerimento).toList();
-        List<Register> existingRegisters = registerRepository.findAllByIdRequerimento(ids);
+        List<Register> existingRegisters = registerRepository.findByIdRequerimentoIn(ids);
 
         Map<String, Register> registerMap = existingRegisters.stream().collect(Collectors.toMap(Register::getIdRequerimento, register -> register));
 

@@ -4,7 +4,6 @@ import br.com.cvm.api_ofertas.database.entities.Register;
 import br.com.cvm.api_ofertas.dto.RegisterRequestDTO;
 import br.com.cvm.api_ofertas.dto.RegisterResponseDTO;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class RegisterMapper {
     }
 
     public RegisterResponseDTO toResponse(Register register) {
-        return new RegisterResponseDTO(register.getId(), register.getIdRequerimento(), register.getNumeroProtocolo(), register.getNumeroProcesso(), register.getNomeValorMobiliario(), register.getTipoDeOferta(), register.getStatusDaOferta(), register.getNomeEmissor(), register.getCnpjEmissor(), register.getNomeCoordenadorLider(), register.getCnpjCoordenadorLider(), register.getValorEmReais(), register.getData(), register.getNomeTipoRequerimento(), register.getVasoComunicante(), register.getPossuiBook(), register.getRegistroAutomatico());
+        return new RegisterResponseDTO(register.getId(), register.getIdRequerimento(), register.getNumeroProtocolo(), register.getNumeroProcesso(), register.getNomeValorMobiliario(), register.getTipoDeOferta(), register.getStatusDaOferta(), register.getNomeEmissor(), register.getCnpjEmissor(), register.getNomeCoordenadorLider(), register.getCnpjCoordenadorLider(), register.getValorEmReais(), register.getData(), register.getNomeTipoRequerimento(), register.getVasoComunicante(), register.getPossuiBook(), register.getRegistroAutomatico(),"https://web.cvm.gov.br/sre-publico-cvm/#/oferta-publica/"+register.getIdRequerimento());
     }
 
     public void updateEntityFromDTO(Register register, RegisterRequestDTO dto) {

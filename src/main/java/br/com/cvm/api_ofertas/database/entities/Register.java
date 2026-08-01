@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@Table(name = "registers")
+@Table(name = "tb_registers")
 public class Register {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -43,7 +43,7 @@ public class Register {
 
     private String valorEmReais;
 
-    private LocalDate data;
+    private String data;
 
     private String nomeTipoRequerimento;
 
@@ -52,4 +52,6 @@ public class Register {
     private Boolean possuiBook;
 
     private Boolean registroAutomatico;
+
+    private String link = "https://web.cvm.gov.br/sre-publico-cvm/#/oferta-publica/"+this.idRequerimento;
 }
