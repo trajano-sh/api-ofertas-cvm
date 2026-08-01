@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.awt.print.Pageable;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,4 +35,6 @@ public interface RegisterRepository extends JpaRepository<Register, UUID> {
     Page<Register> searchByTerm(@Param("searchTerm") String searchTerm, Pageable pageable);
 
     Optional<Register> findByIdRequerimento(String idRequerimento);
+
+    List<Register> findAllByIdRequerimento(List<String> idRequerimento);
 }
